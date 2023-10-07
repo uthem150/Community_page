@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>board page</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0-beta3/css/all.min.css"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div id="root"></div>
+        <div class="header">
+            <h1 class="my-page-container">Community</h1>
+            <img src="image/Edit.png" alt="아이콘" />
+        </div>
+
+        <div class="filter-container">
+            <img id="filter-toggle" src="image/Filter 2.png" alt="필터 아이콘" />
+            <div id="filter-options" class="hidden">
+                <button class="filter-option" data-filter="recent-filter">최신 순</button>
+                <button class="filter-option" data-filter="like-filter">공감 순</button>
+                <button class="filter-option" data-filter="-4">병장</button>
+                <button class="filter-option" data-filter="-3">상병</button>
+                <button class="filter-option" data-filter="-2">일병</button>
+                <button class="filter-option" data-filter="-1">이병</button>
+            </div>
+        </div>
+
+        <div id="custom-post-container">
+            <!-- 게시글 요소들 -->
+        </div>
+
+        <!--
+        <button class="same-button">나와 같은 계급</button>
+        <button class="heart-button sort-button">
+            <img src="image/Heart.png" alt="아이콘" class="star-icon" /> 공감 순
+        </button>
+
+        <button class="filter-button">
+            <img src="image/Filter 2.png" alt="아이콘" />
+        </button>
+    -->
+
+        <div class="post-container">
+            <div class="box-wrapper">
+                <div class="custom-bar">
+                    <img src="image/Ellipse 11.png" alt="이미지 설명" class="custom-image" />
+                    <span class="user-nickname">힘내자청춘 (병장 2호봉)</span>
+                    <span class="day">4일전</span>
+                    <button class="more-button">
+                        <img src="image/More Square.png" alt="아이콘 설명" />
+                    </button>
+                    <div class="text-container">
+                        <span class="text-body"
+                            >“회사의 목표가 너무 높다며 불평불만을 늘어놓거나 포기할 것 같은 사람은
+                            면접 단계에서 다 걸러내려 합니다. 고객 눈높이는 계속 높아지니 어쩔 수
+                            없어요. 이틀 내 배송을 실현하면, 다잉ㄹ려 합니다. 고객 눈높이는 계속
+                            높아지니 어쩔 수 없어요. 이틀 내 배송을 실현하면, 다잉ㄹ 배송을 원하는
+                            게 고객이에요. 그래서 항상 높은 목표를 갖고 일해야 합니다. 꽤
+                            일반화하..려 합니다. 고객 눈높이는 계속 높아지니 어쩔 수 없어요. 이틀 내
+                            배송을 실현하면, 다잉ㄹ 배송을 원하는 게 고객이에요. 그래서 항상 높은
+                            목표를 갖고 일해야 합니다. 꽤 일반화하.. 배송을 원하는 게 고객이에요.
+                            그래서 항상 높은 목표를 갖고 일해야 합니다. 꽤 일반화하...</span
+                        >
+                    </div>
+                </div>
+
+                <div class="custom-bar">
+                    <img src="image/Ellipse 11.png" alt="이미지 설명" class="custom-image" />
+                    <span class="user-nickname">힘내자청춘 (병장 2호봉)</span>
+                    <span class="day">4일전</span>
+                    <button class="more-button">
+                        <img src="image/More Square.png" alt="아이콘 설명" />
+                    </button>
+
+                    <div class="text-container">
+                        <span class="text-body"
+                            >“회사의 목표가 너무 높다며 불평불만을 늘어놓거나 포기할 것 같은 사람은
+                            면접 다잉ㄹ 배송을 원하는 게 고객이에요. 그래서 항상 높은 목표를 갖고
+                            일해야 합니다. 꽤 일반화하...</span
+                        >
+                    </div>
+                </div>
+
+                <div class="custom-bar">
+                    <img src="image/Ellipse 11.png" alt="이미지 설명" class="custom-image" />
+                    <span class="user-nickname">힘내자청춘 (병장 2호봉)</span>
+                    <span class="day">4일전</span>
+                    <button class="more-button">
+                        <img src="image/More Square.png" alt="아이콘 설명" />
+                    </button>
+
+                    <div class="text-container">
+                        <span class="text-body"
+                            >“회사의 목표가 너무 높다며 불평불만을 늘어놓거나 포기할 것 같은 사람은
+                            면접 단계에서 다 걸러내려 합니다. 고객 눈높이는 계속 높아지니 어쩔 수
+                            없어요. 이틀 내 배송을 실현하면, 다잉ㄹ 배송을 원하는 게 고객이에요.
+                            그래서 항상 높은 목표를 갖고 일해야 합니다. 꽤 일반화하...</span
+                        >
+                    </div>
+                </div>
+                <div class="custom-bar">
+                    <img src="image/Ellipse 11.png" alt="이미지 설명" class="custom-image" />
+                    <span class="user-nickname">힘내자청춘 (병장 2호봉)</span>
+                    <span class="day">4일전</span>
+                    <button class="more-button">
+                        <img src="image/More Square.png" alt="아이콘 설명" />
+                    </button>
+
+                    <div class="text-container">
+                        <span class="text-body"
+                            >“회사의 목표가 너무 높다며 불평불만을 늘어놓거나 포기할 것 같은 사람은
+                            면접 단계에서 다 걸러내려 합니다. 고객 눈높이는 계속 높아지니 어쩔 수
+                            없어요. 이틀 내 배송을 실현하면, 다잉ㄹ 배송을 원하는 게 고객이에요.
+                            그래서 항상 높은 목표를 갖고 일해야 합니다. 꽤 일반화하...</span
+                        >
+                    </div>
+                </div>
+                <div class="custom-bar">
+                    <img src="image/Ellipse 11.png" alt="이미지 설명" class="custom-image" />
+                    <span class="user-nickname">힘내자청춘 (병장 2호봉)</span>
+                    <span class="day">4일전</span>
+                    <button class="more-button">
+                        <img src="image/More Square.png" alt="아이콘 설명" />
+                    </button>
+
+                    <div class="text-container">
+                        <span class="text-body"
+                            >“회사의 목표가 너무 높다며 불평불만을 늘어놓거나 포기할 것 같은 사람은
+                            면접 단계에서 다 걸러내려 합니다. 고객 눈높이는 계속 높아지니 어쩔 수
+                            없어요. 이틀 내 배송을 실현하면, 다잉ㄹ 배송을 원하는 게 고객이에요.
+                            그래서 항상 높은 목표를 갖고 일해야 합니다. 꽤 일반화하...</span
+                        >
+                    </div>
+                </div>
+                <div class="custom-bar">
+                    <img src="image/Ellipse 11.png" alt="이미지 설명" class="custom-image" />
+                    <span class="user-nickname">힘내자청춘 (병장 2호봉)</span>
+                    <span class="day">4일전</span>
+                    <button class="more-button">
+                        <img src="image/More Square.png" alt="아이콘 설명" />
+                    </button>
+
+                    <div class="text-container">
+                        <span class="text-body"
+                            >“회사의 목표가 너무 높다며 불평불만을 늘어놓거나 포기할 것 같은 사람은
+                            면접 단계에서 다 걸러내다 걸러내려 합니다. 고객 눈높이는 계속 높아지니
+                            어쩔 수 없어요. 이틀 내 배송을 실현하면, 다잉ㄹ 배송을 원하는 게
+                            고객이에요. 그래서 항상 높은 목표를 갖고 다 걸러내려 합니다. 고객
+                            눈높이는 계속 높아지니 어쩔 수 없어요. 이틀 내 배송을 실현하면, 다잉ㄹ
+                            배송을 원하는 게 고객이에요. 그래서 항상 높은 목표를 갖고 려 합니다.
+                            고객 눈높이는 계속 높아지니 어쩔 수 없어요. 이틀 내 배송을 실현하면,
+                            다잉ㄹ 배송을 원하는 게 고객이에요. 그래서 항상 높은 목표를 갖고 일해야
+                            합니다. 꽤 일반화하...</span
+                        >
+                    </div>
+                </div>
+                <div class="custom-bar">
+                    <img src="image/Ellipse 11.png" alt="이미지 설명" class="custom-image" />
+                    <span class="user-nickname">힘내자청춘 (병장 2호봉)</span>
+                    <span class="day">4일전</span>
+                    <button class="more-button">
+                        <img src="image/More Square.png" alt="아이콘 설명" />
+                    </button>
+
+                    <div class="text-container">
+                        <span class="text-body"
+                            >“회사의 목표가 너무 높다며 불평불만을 늘어놓거나 포기할 것 같은 사람은
+                            면접 단계에서 다 걸러내려 합니다. 고객 눈높이는 계속 높아지니 어쩔 수
+                            없어요. 이틀 내 배송을 실현하다 걸러내려 합니다. 고객 눈높이는 계속
+                            높아지니 어쩔 수 없어요. 이틀 내 배송을 실현하면, 다잉ㄹ 배송을 원하는
+                            게 고객이에요. 그래서 항상 높은 목표를 갖고 다 걸러내려 합니다. 고객
+                            눈높이는 계속 높아지니 어쩔 수 없어요. 이틀 내 배송을 실현하면, 다잉ㄹ
+                            배송을 원하는 게 고객이에요. 그래서 항상 높은 목표를 갖고 다 걸러내려
+                            합니다. 고객 눈높이는 계속 높아지니 어쩔 수 없어요. 이틀 내 배송을
+                            실현하면, 다잉ㄹ 배송을 원하는 게 고객이에요. 그래서 항상 높은 목표를
+                            갖고 면, 다잉ㄹ 배송을 원하는 게 고객이에요. 그래서 항상 높은 목표를
+                            갖고 일해야 합니다. 꽤 일반화하...</span
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div>
+                <button><img src="image/Chat.png" alt="아이콘 1" /></button>
+                <span></span>
+            </div>
+            <div>
+                <button><img src="image/Document.png" alt="아이콘 2" /></button>
+                <span></span>
+            </div>
+            <div>
+                <button><img src="image/Home.png" alt="아이콘 3" /></button>
+                <span></span>
+            </div>
+            <div>
+                <button><img src="image/Plus.png" alt="아이콘 4" /></button>
+                <span></span>
+            </div>
+            <div>
+                <button><img src="image/Profile.png" alt="아이콘 5" /></button>
+                <span></span>
+            </div>
+        </div>
+        <script>
+            (function () {
+                // 모든 custom-bar 요소 선택
+                var customBars = document.querySelectorAll('.custom-bar');
+
+                customBars.forEach(function (customBar) {
+                    // text-body 요소 선택
+                    var textBody = customBar.querySelector('.text-body');
+
+                    // text-body의 텍스트 가져오기
+                    var originalText = textBody.textContent;
+
+                    // 최대 글자 수 설정 (200)
+                    var maxCharacters = 200;
+
+                    if (originalText.length > maxCharacters) {
+                        // text-body의 길이가 최대 글자 수보다 크면
+
+                        // 잘라낸 텍스트 생성 (200자까지)
+                        var truncatedText = originalText.slice(0, maxCharacters);
+
+                        textBody.textContent = truncatedText; // 잘라낸 텍스트로 대체
+
+                        // '더보기' 버튼 생성 및 추가하기
+                        var moreButton = document.createElement('button');
+                        moreButton.classList.add('more-text-button');
+                        moreButton.textContent = '더보기';
+
+                        customBar.appendChild(moreButton); //'더보기' 버튼 추가
+
+                        // '더보기' 버튼 클릭 시 전체 텍스트 보여주고 박스 크기 조정하기
+                        moreButton.addEventListener('click', function () {
+                            textBody.textContent = originalText;
+                            this.remove(); //'더보기' 버튼 제거
+
+                            // 박스 크기 조정하기
+                            customBar.style.height = getComputedStyle(textBody).height;
+                        });
+                    }
+
+                    // 여백 설정을 위한 스타일 적용
+                    customBar.style.paddingBottom = '3rem'; // 아래쪽 여백 설정 예시
+                });
+            })();
+
+            const filterToggle = document.getElementById('filter-toggle');
+            const filterOptions = document.getElementById('filter-options');
+            filterOptions.style.display = 'none'; // 페이지 로드 시 필터 옵션 박스 숨김 처리
+            const postContainer = document.getElementById('post-container');
+
+            // 이미지 클릭 시 필터 옵션 표시/숨김 토글
+            if (filterToggle) {
+                filterToggle.addEventListener('click', function () {
+                    if (getComputedStyle(filterOptions).display === 'none') {
+                        filterOptions.style.display = 'flex'; // 수직 배치 유지를 위해 'block' 대신 'flex' 사용
+                    } else {
+                        filterOptions.style.display = 'none';
+                    }
+                });
+            }
+
+            // 각 필터 옵션 클릭 시 이벤트 처리
+            document.querySelectorAll('.filter-option').forEach(function (option) {
+                option.addEventListener('mousedown', function () {
+                    // 모든 버튼의 배경색과 텍스트 색상을 초기화합니다.
+                    document.querySelectorAll('.filter-option').forEach(function (btn) {
+                        btn.style.backgroundColor = '';
+                        btn.style.color = '';
+                    });
+
+                    // 마우스 버튼이 눌러진 동안 현재 버튼의 배경색과 텍스트 색상을 변경합니다.
+                    this.style.backgroundColor = '#86E57F';
+                    this.style.color = 'white';
+                });
+
+                option.addEventListener('touchstart', function () {
+                    // 모든 버튼의 배경색과 텍스트 색상을 초기화합니다.
+                    document.querySelectorAll('.filter-option').forEach(function (btn) {
+                        btn.style.backgroundColor = '';
+                        btn.style.color = '';
+                    });
+
+                    // 터치가 시작된 동안 현재 버튼의 배경색과 텍스트 색상을 변경합니다.
+                    this.style.backgroundColor = '#86E57F';
+                    this.style.color = 'white';
+                });
+
+                option.addEventListener('click', function () {
+                    const selectedFilterValue = this.getAttribute('data-filter');
+
+                    // 선택된 필터 값으로 게시글 정렬 로직 처리
+
+                    // 예시로 선택된 필터 값을 콘솔에 출력하는 로직 추가
+                    console.log('Selected Filter:', selectedFilterValue);
+
+                    // 선택 후 필터 옵션 숨김 처리
+                    filterOptions.style.display = 'none';
+                });
+            });
+
+            // 게시글 정렬 함수 (실제 데이터와 맞게 수정해야 함)
+            function sortPosts(filter) {
+                const postsArray = Array.from(postContainer.children);
+                postsArray.sort(function (a, b) {
+                    if (a.getAttribute('data-post') === filter) {
+                        return -1;
+                    } else if (b.getAttribute('data-post') === filter) {
+                        return +1;
+                    } else {
+                        return a.dataset.post.localeCompare(b.dataset.post);
+                    }
+                });
+
+                for (let i = 0; i < postsArray.length; ++i) {
+                    postContainer.appendChild(postsArray[i]);
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,419 @@
+            /* 전체배경 */
+            body {
+                background-color: #adadad; /* 그레이(회색) 배경색상 설정 */
+                margin: 0; /* 바깥여백제거 */
+                padding: 0; /* 내부여백제거 */
+                width: 100%; /* 화면 너비 100%로 설정 */
+                height: auto; /* 높이 자동으로 설정 */
+                overflow: hidden; /* 넘치는 내용 숨김 처리 */
+            }
+
+            /* 헤더 스타일 */
+            .header {
+                background-color: white; /* 배경색상 설정 */
+                color: #007120; /* 텍스트 색상 설정 */
+                padding: 0.8rem; /* 내부 여백 조정 */
+                text-align: center; /* 텍스트 가운데 정렬 */
+                box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2); /* 헤더에 그림자 추가 */
+                position: relative; /* 밑줄을 그릴 때 위치 지정 */
+                display: flex; /* 헤더 내부를 Flex 컨테이너로 설정 */
+                justify-content: space-between; /* Flex 요소 간 공간을 동일하게 배분 */
+                align-items: center; /* 수직 가운데 정렬 */
+                height: 7vh;
+            }
+
+            .header::after {
+                content: ''; /* 가상 요소 추가 */
+                display: block; /* 블록 요소로 설정 */
+                height: 2px; /* 밑줄 높이 설정 */
+                background-color: #ccc; /* 밑줄 색상 설정 */
+                position: absolute; /* 절대 위치 지정 */
+                left: 0; /* 왼쪽 정렬 */
+                right: 0; /* 오른쪽 정렬 */
+                bottom: 0; /* 아래 정렬 */
+            }
+
+.header img {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+    height: 3.3rem;
+
+                padding-left: 1rem; /* 안쪽 여백 설정 */
+                padding-right: 1.6rem; /* 안쪽 여백 설정 */
+}
+
+            /* "MY page" 칸 스타일 */
+            .my-page-container {
+                color: #007120;
+                text-align: center;
+                font-family: Noto Sans;
+                font-size: 3rem;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 2.5rem; /* 138.889% */
+                flex-grow: 1; /* Flex 아이콘과 함께 Flex 크기를 동적으로 조정 */
+            }
+
+            /* 프로필 칸 스타일 */
+            .profile-container {
+                background-color: white;
+                text-align: center;
+                padding: 20px;
+                margin: 10px;
+                border-radius: 10px;
+            }
+
+            .profile-header {
+                display: flex;
+                align-items: center;
+            }
+
+            .profile-picture {
+                float: left; /* 왼쪽으로 배치 */
+                width: 75px;
+                height: 75px;
+                border-radius: 50%;
+                border: 2px solid #007120;
+                background: rgba(255, 255, 255, 0.19);
+                overflow: hidden;
+            }
+
+            .profile-picture img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover; /* 원형 틀 내에 이미지가 꽉 차도록 설정 */
+            }
+
+            /* 아이콘 스타일 */
+            .profile-icon {
+                margin-left: auto;
+            }
+
+            .profile-description {
+                flex-grow: 1; /* 남은 공간을 채우기 위해 flex-grow를 추가합니다. */
+                color: #000;
+                font-family: Noto Sans;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 25px;
+            }
+
+            /* 목록 스타일 */
+            .list {
+                background-color: white;
+                padding: 20px;
+                margin: 10px;
+                border-radius: 10px;
+            }
+
+            .list ul {
+                list-style-type: none;
+                padding: 0;
+            }
+
+            .list li {
+                border-bottom: 1px solid #ccc;
+                padding: 10px 0;
+                color: #000; /* 텍스트 색상 설정 */
+                font-family: Noto Sans; /* 폰트 설정 */
+                font-size: 16px; /* 폰트 크기 설정 */
+                font-style: normal; /* 폰트 스타일 설정 */
+                font-weight: 400; /* 폰트 두께 설정 */
+                line-height: 25px; /* 줄 높이 설정 */
+            }
+
+            /* 하단 바 스타일 */
+            .footer {
+                background-color: #fff;
+                color: #007120;
+                text-align: center;
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                height: 7vh;
+                z-index: 1;
+            }
+
+            /* 아이콘 버튼 스타일 추가 */
+            .footer button {
+                background-color: transparent;
+                border: none;
+                color: #fff;
+                font-size: 24px;
+                margin: 10px;
+                cursor: pointer;
+            }
+
+            /* 아이콘에 호버 효과 추가 */
+            .footer button:hover {
+                color: #e0e0e0;
+            }
+
+            /* 아이콘 스타일 */
+            .footer img {
+                width: 3.3rem;
+                height: 3.3rem;
+            }
+
+            .footer span {
+                font-size: 12px;
+            }
+
+            .button-list button {
+                background: none;
+                border: none;
+                padding: 0;
+                cursor: pointer;
+            }
+
+            .heart-button {
+                width: 97px;
+                height: 21px;
+                flex-shrink: 0;
+                border-radius: 20px;
+                border: 1px solid #828282;
+                background: #fff;
+                color: #000;
+                font-family: Noto Sans;
+                font-size: 10px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+            }
+            /* 스타일이 적용된 버튼 */
+            .custom-button {
+                width: 74px;
+                height: 21px;
+                flex-shrink: 0;
+                color: #000;
+                font-family: Noto Sans;
+                font-size: 10px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+                border-radius: 20px;
+                border: 1px solid #828282;
+                background: #fff;
+            }
+
+            .custom-button img {
+                display: flex;
+                width: 15px;
+                height: 15px;
+                padding: 1.563px 1.25px 1.562px 1.25px;
+                justify-content: center;
+                align-items: center;
+                flex-shrink: 0;
+            }
+
+            .custom-bar {
+                width: 90vw;
+
+                flex-shrink: 0;
+                border-radius: 12px;
+                border: 0.7px solid #828282;
+                background: #fff;
+                margin-bottom: 0.5rem;
+                margin-top: 0.2rem;
+                padding-left: 1rem; /* 안쪽 여백 설정 */
+                padding-right: 1rem; /* 안쪽 여백 설정 */
+                overflow: auto;
+                overflow-y: scroll;
+                overflow-x: hidden;
+            }
+
+    .user-nickname {
+                display: flex;
+                width: 30rem;
+                height: 1rem;
+                flex-direction: column;
+                justify-content: center;
+                flex-shrink: 0;
+                color: #000;
+                font-family: Noto Sans;
+                font-size: 2rem;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+                margin-top: -4.8rem;
+                margin-left: 7.4rem;
+            }
+
+            .custom-image {
+                width: 5rem;
+                height: 5rem;
+                flex-shrink: 0;
+                border-radius: 3rem;
+                border: 1px solid #4e4e4e;
+                background: url(<path-to-image>), lightgray 50% / cover no-repeat;
+
+                margin-top: 1.7rem;
+                margin-left: 0.7rem;
+                margin-bottom: 0.5rem;
+                margin-right: 0.5rem;
+            }
+
+            .day {
+                display: flex;
+                width: 30rem;
+                height: 3.5rem;
+                flex-direction: column;
+                justify-content: center;
+                flex-shrink: 0;
+                color: #777;
+                font-family: Noto Sans;
+                font-size: 1.5rem;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+                margin-top: 0.5rem;
+                margin-left: 7.4rem;
+            }
+
+            .text-body {
+                display: inline-block;
+                width: 85vw;
+                height: auto;
+                flex-shrink: 0;
+                color: #000;
+                font-family: Noto Sans;
+                font-size: 2rem;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 1.5;
+                letter-spacing: 0.22px;
+                margin-top: 0.5rem;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                margin-bottom: 0.5rem;
+
+            }
+
+.action-container button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    margin: 0.2rem;
+    cursor: pointer;
+}
+.action-image-1 {
+    height: 3.5rem;
+    margin: 1rem;
+    margin-right: 0.2rem;
+}
+.action-image-2 {
+    height: 3.3rem;
+    margin: 1rem;
+    margin-right: 0.2rem;
+}
+.action-image-3 {
+    height: 3.6rem;
+    margin: 1rem;
+    margin-right: 0.2rem;
+    padding-top:0.2rem;
+}
+
+.action-container {
+  display: flex;
+}
+            .more-button {
+                position: relative;
+                cursor: pointer;
+                display: flex;
+                background: none; /* 배경색 제거 */
+                border: none; /* 테두리 제거 */
+                padding: 0;
+                width: 0rem;
+                height: 1rem;
+                /* transform: rotate(-90deg); */
+                padding-right: 0.6rem;
+                padding-top: 0.8rem;
+                /* padding-bottom: 2rem; */
+                justify-content: center;
+                align-items: center;
+                flex-shrink: 0;
+                margin-left: auto;
+                margin-top: -2.5rem;
+                margin-bottom: 1.8rem;
+            }
+
+            .post-container {
+                overflow: auto;
+                width: 100vw;
+                height: 82vh;
+            }
+            
+
+            .box-wrapper {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                
+                padding-bottom: 1rem;
+            }
+
+            .more-text-button {
+                background-color: transparent;
+                border: none;
+                color: #8c8c8c;
+                line-height: 1.5;
+                font-size: 2rem;
+            }
+
+            .text-container {
+  display: flex;
+  justify-content: center;
+                
+            }
+
+            .hidden {
+                display: none;
+            }
+
+            #filter-options {
+                background-color: white;
+                border: 1px solid #007120; /* 테두리 추가 */
+                display: flex; /* Flexbox 사용 */
+                flex-direction: column; /* 수직 방향 배치 */
+                margin: auto; /* 중앙 정렬을 위한 마진 설정 */
+                border-radius: 10px;
+                width: 95vw;
+            }
+
+            #filter-toggle {
+                position: absolute;
+                right: 0; /* 이미지를 오른쪽에 배치 */
+                height: 2.4rem;
+                margin: 1rem;
+                padding-right: 0.5rem; /* 안쪽 여백 설정 */
+                margin-top: 1.3rem;
+            }
+
+            .filter-container {
+                position: relative;
+                height: 4vh; /* 부모 요소의 높이를 2rem으로 설정 */
+            }
+
+            .filter-option {
+                font-size: 1.7rem;
+                font-family: Noto Sans;
+                line-height: 4.5rem;
+                background-color: transparent;
+                border: none; /* 테두리를 없앰 */
+            }
+
+            #filter-options {
+                position: absolute; /* 필터 옵션 박스를 절대적인 위치에 배치 */
+                top: calc(100% + 0.5rem); /* 버튼 바로 아래에 1rem 여백을 두고 배치 */
+                left: 50%; /* 부모 요소의 중앙으로 이동 */
+                left: 50%; /* 부모 요소의 중앙으로 이동 */
+                transform: translateX(
+                    -50%
+                ); /* 자신의 너비의 반만큼 왼쪽으로 이동하여 가운데 정렬 */
+            }
