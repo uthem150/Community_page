@@ -295,6 +295,7 @@
 
             }
 
+
 .action-container button {
     background-color: transparent;
     border: none;
@@ -305,6 +306,7 @@
 .action-image-1 {
     height: 3.5rem;
     margin: 1rem;
+    margin-left: 0rem;
     margin-right: 0.2rem;
 }
 .action-image-2 {
@@ -321,6 +323,12 @@
 
 .action-container {
   display: flex;
+    width: 85vw;
+}
+.action-wrapper {
+      display: flex;
+  justify-content: center;
+  align-items: center;
 }
             .more-button {
                 position: relative;
@@ -417,3 +425,10 @@
                     -50%
                 ); /* 자신의 너비의 반만큼 왼쪽으로 이동하여 가운데 정렬 */
             }
+
+
+  .button {
+    outline: none;
+    border: none;
+    background-color: transparent !important;
+  }

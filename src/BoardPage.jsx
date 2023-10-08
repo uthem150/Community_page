@@ -5,18 +5,35 @@ import { useState } from 'react';
 import './BoardPage.css'; // BoardPage.css 파일을 import
 
 const BoardPage = () => {
-    const handleButtonClick = () => {
+    const handleButtonClickBoard = () => {
         //버튼 누르면 맨 위 글로 이동
         window.scrollTo({
             top: 0,
             behavior: 'smooth', // 부드러운 스크롤링 효과 적용 (선택 사항)
         });
     };
-    useEffect(() => {
-          const customBars = document.querySelectorAll('.custom-bar');
 
-  customBars.forEach((customBar) => {
-const textBody = customBar.querySelector('.text-body');
+    const [isHeartClicked, setIsHeartClicked] = useState(false);
+    const [isBookmarkClicked, setIsBookmarkClicked] = useState(false);
+    const [isChatClicked, setIsChatClicked] = useState(false);
+
+    const handleHeartButtonClick = () => {
+        setIsHeartClicked(!isHeartClicked);
+    };
+
+    const handleBookmarkButtonClick = () => {
+        setIsBookmarkClicked(!isBookmarkClicked);
+    };
+
+    const handleChatButtonClick = () => {
+        setIsChatClicked(!isChatClicked);
+    };
+
+    useEffect(() => {
+        const customBars = document.querySelectorAll('.custom-bar');
+
+        customBars.forEach((customBar) => {
+            const textBody = customBar.querySelector('.text-body');
             const originalText = textBody.textContent;
             const maxCharacters = 200;
 
@@ -33,7 +50,7 @@ const textBody = customBar.querySelector('.text-body');
                 moreButton.addEventListener('click', function () {
                     textBody.textContent = originalText;
                     this.remove();
-textBody.style.fontSize = '2rem';
+                    textBody.style.fontSize = '2rem';
                 });
             }
         });
@@ -131,10 +148,6 @@ textBody.style.fontSize = '2rem';
                         <span className="user-nickname">힘내자청춘 (병장 2호봉)</span>
                         {/* 작성 날짜 */}
                         <span className="day">4일전</span>
-                        {/* 더보기 버튼 
-                        <button className="more-button">                       
-                            <img src="/image/More Square.png" alt="" />
-                        </button> */}
 
                         {/* 게시글 내용 */}
                         <div className="text-container">
@@ -151,19 +164,254 @@ textBody.style.fontSize = '2rem';
                                 일해야 합니다. 꽤 일반화하...
                             </span>
                         </div>
-                        <div className="action-container">
-                            {/* 반응 이미지 */}
-                            <button onClick={handleButtonClick}>
-                            <img src="/image/LightHeart.png" alt="" className="action-image-1" />
-                            </button>
-                            {/* 반응 이미지 */}
-                            <button onClick={handleButtonClick}>
-                            <img src="/image/Chat.png" alt="" className="action-image-2" />
-                            </button>
-                            {/* 반응 이미지 */}
-                            <button onClick={handleButtonClick}>
-                            <img src="/image/Bookmark.png" alt="" className="action-image-3" />
-                            </button>
+                        <div className="action-wrapper">
+                            <div className="action-container">
+                                {/* 반응 이미지 */}
+                                <button onClick={handleHeartButtonClick}>
+                                    <img
+                                        src={
+                                            isHeartClicked
+                                                ? '/image/fillHeart2.png'
+                                                : '/image/Heart2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-1"
+                                    />
+                                </button>
+
+                                <button onClick={handleChatButtonClick}>
+                                    <img
+                                        src={
+                                            isChatClicked
+                                                ? '/image/fillChat2.png'
+                                                : '/image/Chat2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-2"
+                                    />
+                                </button>
+
+                                <button onClick={handleBookmarkButtonClick}>
+                                    <img
+                                        src={
+                                            isBookmarkClicked
+                                                ? '/image/fillBookmark2.png'
+                                                : '/image/Bookmark2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-3"
+                                    />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                {/* 게시글 내용 */}
+                <div className="box-wrapper">
+                    {/* 첫 번째 게시글 */}
+                    <div className="custom-bar">
+                        {/* 프로필 이미지 */}
+                        <img src="/image/Ellipse 11.png" alt="" className="custom-image" />
+                        {/* 사용자 닉네임 */}
+                        <span className="user-nickname">힘내자청춘 (병장 2호봉)</span>
+                        {/* 작성 날짜 */}
+                        <span className="day">4일전</span>
+
+                        {/* 게시글 내용 */}
+                        <div className="text-container">
+                            <span className="text-body">
+                                “회사의 목표가 너무 높다며 불평불만을 늘어놓거나 포기할 것 같은
+                                사람은 면접 단계에서 다 걸러내려 합니다. 고객 눈높이는 계속 높아지니
+                                어쩔 수 없어요. 이틀 내 배송을 실현하면, 다잉ㄹ려 합니다. 고객
+                                눈높이는 계속 높아지니 어쩔 수 없어요. 이틀 내 배송을 실현하면,
+                                다잉ㄹ 배송을 원하는 게 고객이에요. 그래서 항상 높은 목표를 갖고
+                                일해야 합니다. 꽤 일반화하..려 합니다. 고객 눈높이는 계속 높아지니
+                                어쩔 수 없어요. 이틀 내 배송을 실현하면, 다잉ㄹ 배송을 원하는 게
+                                고객이에요. 그래서 항상 높은 목표를 갖고 일해야 합니다. 꽤
+                                일반화하.. 배송을 원하는 게 고객이에요. 그래서 항상 높은 목표를 갖고
+                                일해야 합니다. 꽤 일반화하...
+                            </span>
+                        </div>
+                        <div className="action-wrapper">
+                            <div className="action-container">
+                                {/* 반응 이미지 */}
+                                <button onClick={handleHeartButtonClick}>
+                                    <img
+                                        src={
+                                            isHeartClicked
+                                                ? '/image/fillHeart2.png'
+                                                : '/image/Heart2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-1"
+                                    />
+                                </button>
+
+                                <button onClick={handleChatButtonClick}>
+                                    <img
+                                        src={
+                                            isChatClicked
+                                                ? '/image/fillChat2.png'
+                                                : '/image/Chat2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-2"
+                                    />
+                                </button>
+
+                                <button onClick={handleBookmarkButtonClick}>
+                                    <img
+                                        src={
+                                            isBookmarkClicked
+                                                ? '/image/fillBookmark2.png'
+                                                : '/image/Bookmark2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-3"
+                                    />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                {/* 게시글 내용 */}
+                <div className="box-wrapper">
+                    {/* 첫 번째 게시글 */}
+                    <div className="custom-bar">
+                        {/* 프로필 이미지 */}
+                        <img src="/image/Ellipse 11.png" alt="" className="custom-image" />
+                        {/* 사용자 닉네임 */}
+                        <span className="user-nickname">힘내자청춘 (병장 2호봉)</span>
+                        {/* 작성 날짜 */}
+                        <span className="day">4일전</span>
+
+                        {/* 게시글 내용 */}
+                        <div className="text-container">
+                            <span className="text-body">
+                                “회사의 목표가 너무 높다며 불평불만을 늘어놓거나 포기할 것 같은
+                                사람은 면접 단계에서 다 걸러내려 합니다. 고객 눈높이는 계속 높아지니
+                                어쩔 수 없어요. 이틀 내 배송을 실현하면, 다잉ㄹ려 합니다. 고객
+                                눈높이는 계속 높아지니 어쩔 수 없어요. 이틀 내 배송을 실현하면,
+                                다잉ㄹ 배송을 원하는 게 고객이에요. 그래서 항상 높은 목표를 갖고
+                                일해야 합니다. 꽤 일반화하..려 합니다. 고객 눈높이는 계속 높아지니
+                                어쩔 수 없어요. 이틀 내 배송을 실현하면, 다잉ㄹ 배송을 원하는 게
+                                고객이에요. 그래서 항상 높은 목표를 갖고 일해야 합니다. 꽤
+                                일반화하.. 배송을 원하는 게 고객이에요. 그래서 항상 높은 목표를 갖고
+                                일해야 합니다. 꽤 일반화하...
+                            </span>
+                        </div>
+                        <div className="action-wrapper">
+                            <div className="action-container">
+                                {/* 반응 이미지 */}
+                                <button onClick={handleHeartButtonClick}>
+                                    <img
+                                        src={
+                                            isHeartClicked
+                                                ? '/image/fillHeart2.png'
+                                                : '/image/Heart2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-1"
+                                    />
+                                </button>
+
+                                <button onClick={handleChatButtonClick}>
+                                    <img
+                                        src={
+                                            isChatClicked
+                                                ? '/image/fillChat2.png'
+                                                : '/image/Chat2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-2"
+                                    />
+                                </button>
+
+                                <button onClick={handleBookmarkButtonClick}>
+                                    <img
+                                        src={
+                                            isBookmarkClicked
+                                                ? '/image/fillBookmark2.png'
+                                                : '/image/Bookmark2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-3"
+                                    />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+{/* 게시글 내용 */}
+                <div className="box-wrapper">
+                    {/* 첫 번째 게시글 */}
+                    <div className="custom-bar">
+                        {/* 프로필 이미지 */}
+                        <img src="/image/Ellipse 11.png" alt="" className="custom-image" />
+                        {/* 사용자 닉네임 */}
+                        <span className="user-nickname">힘내자청춘 (병장 2호봉)</span>
+                        {/* 작성 날짜 */}
+                        <span className="day">4일전</span>
+
+                        {/* 게시글 내용 */}
+                        <div className="text-container">
+                            <span className="text-body">
+                                “회사의 목표가 너무 높다며 불평불만을 늘어놓거나 포기할 것 같은
+                                사람은 면접 단계에서 다 걸러내려 합니다. 고객 눈높이는 계속 높아지니
+                                어쩔 수 없어요. 이틀 내 배송을 실현하면, 다잉ㄹ려 합니다. 고객
+                                눈높이는 계속 높아지니 어쩔 수 없어요. 이틀 내 배송을 실현하면,
+                                다잉ㄹ 배송을 원하는 게 고객이에요. 그래서 항상 높은 목표를 갖고
+                                일해야 합니다. 꽤 일반화하..려 합니다. 고객 눈높이는 계속 높아지니
+                                어쩔 수 없어요. 이틀 내 배송을 실현하면, 다잉ㄹ 배송을 원하는 게
+                                고객이에요. 그래서 항상 높은 목표를 갖고 일해야 합니다. 꽤
+                                일반화하.. 배송을 원하는 게 고객이에요. 그래서 항상 높은 목표를 갖고
+                                일해야 합니다. 꽤 일반화하...
+                            </span>
+                        </div>
+                        <div className="action-wrapper">
+                            <div className="action-container">
+                                {/* 반응 이미지 */}
+                                <button onClick={handleHeartButtonClick}>
+                                    <img
+                                        src={
+                                            isHeartClicked
+                                                ? '/image/fillHeart2.png'
+                                                : '/image/Heart2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-1"
+                                    />
+                                </button>
+
+                                <button onClick={handleChatButtonClick}>
+                                    <img
+                                        src={
+                                            isChatClicked
+                                                ? '/image/fillChat2.png'
+                                                : '/image/Chat2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-2"
+                                    />
+                                </button>
+
+                                <button onClick={handleBookmarkButtonClick}>
+                                    <img
+                                        src={
+                                            isBookmarkClicked
+                                                ? '/image/fillBookmark2.png'
+                                                : '/image/Bookmark2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-3"
+                                    />
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -179,10 +427,6 @@ textBody.style.fontSize = '2rem';
                         <span className="user-nickname">힘내자청춘 (병장 2호봉)</span>
                         {/* 작성 날짜 */}
                         <span className="day">4일전</span>
-                        {/* 더보기 버튼 
-                        <button className="more-button">
-                            <img src="/image/More Square.png" alt="" />
-                        </button> */}
 
                         {/* 게시글 내용 */}
                         <div className="text-container">
@@ -199,74 +443,45 @@ textBody.style.fontSize = '2rem';
                                 일해야 합니다. 꽤 일반화하...
                             </span>
                         </div>
-                    </div>
-                </div>
-                
-                
-                {/* 게시글 내용 */}
-                <div className="box-wrapper">
-                    {/* 첫 번째 게시글 */}
-                    <div className="custom-bar">
-                        {/* 프로필 이미지 */}
-                        <img src="/image/Ellipse 11.png" alt="" className="custom-image" />
-                        {/* 사용자 닉네임 */}
-                        <span className="user-nickname">힘내자청춘 (병장 2호봉)</span>
-                        {/* 작성 날짜 */}
-                        <span className="day">4일전</span>
-                        {/* 더보기 버튼 */}
-                        <button className="more-button">
-                            <img src="/image/More Square.png" alt="" />
-                        </button>
+                        <div className="action-wrapper">
+                            <div className="action-container">
+                                {/* 반응 이미지 */}
+                                <button onClick={handleHeartButtonClick}>
+                                    <img
+                                        src={
+                                            isHeartClicked
+                                                ? '/image/fillHeart2.png'
+                                                : '/image/Heart2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-1"
+                                    />
+                                </button>
 
-                        {/* 게시글 내용 */}
-                        <div className="text-container">
-                            <span className="text-body">
-                                “회사의 목표가 너무 높다며 불평불만을 늘어놓거나 포기할 것 같은
-                                사람은 면접 단계에서 다 걸러내려 합니다. 고객 눈높이는 계속 높아지니
-                                어쩔 수 없어요. 이틀 내 배송을 실현하면, 다잉ㄹ려 합니다. 고객
-                                눈높이는 계속 높아지니 어쩔 수 없어요. 이틀 내 배송을 실현하면,
-                                다잉ㄹ 배송을 원하는 게 고객이에요. 그래서 항상 높은 목표를 갖고
-                                일해야 합니다. 꽤 일반화하..려 합니다. 고객 눈높이는 계속 높아지니
-                                어쩔 수 없어요. 이틀 내 배송을 실현하면, 다잉ㄹ 배송을 원하는 게
-                                고객이에요. 그래서 항상 높은 목표를 갖고 일해야 합니다. 꽤
-                                일반화하.. 배송을 원하는 게 고객이에요. 그래서 항상 높은 목표를 갖고
-                                일해야 합니다. 꽤 일반화하...
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                
-                
-                
-                {/* 게시글 내용 */}
-                <div className="box-wrapper">
-                    {/* 첫 번째 게시글 */}
-                    <div className="custom-bar">
-                        {/* 프로필 이미지 */}
-                        <img src="/image/Ellipse 11.png" alt="" className="custom-image" />
-                        {/* 사용자 닉네임 */}
-                        <span className="user-nickname">힘내자청춘 (병장 2호봉)</span>
-                        {/* 작성 날짜 */}
-                        <span className="day">4일전</span>
-                        {/* 더보기 버튼 */}
-                        <button className="more-button">
-                            <img src="/image/More Square.png" alt="" />
-                        </button>
+                                <button onClick={handleChatButtonClick}>
+                                    <img
+                                        src={
+                                            isChatClicked
+                                                ? '/image/fillChat2.png'
+                                                : '/image/Chat2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-2"
+                                    />
+                                </button>
 
-                        {/* 게시글 내용 */}
-                        <div className="text-container">
-                            <span className="text-body">
-                                “회사의 목표가 너무 높다며 불평불만을 늘어놓거나 포기할 것 같은
-                                사람은 면접 단계에서 다 걸러내려 합니다. 고객 눈높이는 계속 높아지니
-                                어쩔 수 없어요. 이틀 내 배송을 실현하면, 다잉ㄹ려 합니다. 고객
-                                눈높이는 계속 높아지니 어쩔 수 없어요. 이틀 내 배송을 실현하면,
-                                다잉ㄹ 배송을 원하는 게 고객이에요. 그래서 항상 높은 목표를 갖고
-                                일해야 합니다. 꽤 일반화하..려 합니다. 고객 눈높이는 계속 높아지니
-                                어쩔 수 없어요. 이틀 내 배송을 실현하면, 다잉ㄹ 배송을 원하는 게
-                                고객이에요. 그래서 항상 높은 목표를 갖고 일해야 합니다. 꽤
-                                일반화하.. 배송을 원하는 게 고객이에요. 그래서 항상 높은 목표를 갖고
-                                일해야 합니다. 꽤 일반화하...
-                            </span>
+                                <button onClick={handleBookmarkButtonClick}>
+                                    <img
+                                        src={
+                                            isBookmarkClicked
+                                                ? '/image/fillBookmark2.png'
+                                                : '/image/Bookmark2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-3"
+                                    />
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -283,10 +498,6 @@ textBody.style.fontSize = '2rem';
                         <span className="user-nickname">힘내자청춘 (병장 2호봉)</span>
                         {/* 작성 날짜 */}
                         <span className="day">4일전</span>
-                        {/* 더보기 버튼 */}
-                        <button className="more-button">
-                            <img src="/image/More Square.png" alt="" />
-                        </button>
 
                         {/* 게시글 내용 */}
                         <div className="text-container">
@@ -302,6 +513,46 @@ textBody.style.fontSize = '2rem';
                                 일반화하.. 배송을 원하는 게 고객이에요. 그래서 항상 높은 목표를 갖고
                                 일해야 합니다. 꽤 일반화하...
                             </span>
+                        </div>
+                        <div className="action-wrapper">
+                            <div className="action-container">
+                                {/* 반응 이미지 */}
+                                <button onClick={handleHeartButtonClick}>
+                                    <img
+                                        src={
+                                            isHeartClicked
+                                                ? '/image/fillHeart2.png'
+                                                : '/image/Heart2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-1"
+                                    />
+                                </button>
+
+                                <button onClick={handleChatButtonClick}>
+                                    <img
+                                        src={
+                                            isChatClicked
+                                                ? '/image/fillChat2.png'
+                                                : '/image/Chat2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-2"
+                                    />
+                                </button>
+
+                                <button onClick={handleBookmarkButtonClick}>
+                                    <img
+                                        src={
+                                            isBookmarkClicked
+                                                ? '/image/fillBookmark2.png'
+                                                : '/image/Bookmark2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-3"
+                                    />
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -318,10 +569,6 @@ textBody.style.fontSize = '2rem';
                         <span className="user-nickname">힘내자청춘 (병장 2호봉)</span>
                         {/* 작성 날짜 */}
                         <span className="day">4일전</span>
-                        {/* 더보기 버튼 */}
-                        <button className="more-button">
-                            <img src="/image/More Square.png" alt="" />
-                        </button>
 
                         {/* 게시글 내용 */}
                         <div className="text-container">
@@ -337,6 +584,46 @@ textBody.style.fontSize = '2rem';
                                 일반화하.. 배송을 원하는 게 고객이에요. 그래서 항상 높은 목표를 갖고
                                 일해야 합니다. 꽤 일반화하...
                             </span>
+                        </div>
+                        <div className="action-wrapper">
+                            <div className="action-container">
+                                {/* 반응 이미지 */}
+                                <button onClick={handleHeartButtonClick}>
+                                    <img
+                                        src={
+                                            isHeartClicked
+                                                ? '/image/fillHeart2.png'
+                                                : '/image/Heart2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-1"
+                                    />
+                                </button>
+
+                                <button onClick={handleChatButtonClick}>
+                                    <img
+                                        src={
+                                            isChatClicked
+                                                ? '/image/fillChat2.png'
+                                                : '/image/Chat2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-2"
+                                    />
+                                </button>
+
+                                <button onClick={handleBookmarkButtonClick}>
+                                    <img
+                                        src={
+                                            isBookmarkClicked
+                                                ? '/image/fillBookmark2.png'
+                                                : '/image/Bookmark2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-3"
+                                    />
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -353,10 +640,6 @@ textBody.style.fontSize = '2rem';
                         <span className="user-nickname">힘내자청춘 (병장 2호봉)</span>
                         {/* 작성 날짜 */}
                         <span className="day">4일전</span>
-                        {/* 더보기 버튼 */}
-                        <button className="more-button">
-                            <img src="/image/More Square.png" alt="" />
-                        </button>
 
                         {/* 게시글 내용 */}
                         <div className="text-container">
@@ -372,6 +655,46 @@ textBody.style.fontSize = '2rem';
                                 일반화하.. 배송을 원하는 게 고객이에요. 그래서 항상 높은 목표를 갖고
                                 일해야 합니다. 꽤 일반화하...
                             </span>
+                        </div>
+                        <div className="action-wrapper">
+                            <div className="action-container">
+                                {/* 반응 이미지 */}
+                                <button onClick={handleHeartButtonClick}>
+                                    <img
+                                        src={
+                                            isHeartClicked
+                                                ? '/image/fillHeart2.png'
+                                                : '/image/Heart2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-1"
+                                    />
+                                </button>
+
+                                <button onClick={handleChatButtonClick}>
+                                    <img
+                                        src={
+                                            isChatClicked
+                                                ? '/image/fillChat2.png'
+                                                : '/image/Chat2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-2"
+                                    />
+                                </button>
+
+                                <button onClick={handleBookmarkButtonClick}>
+                                    <img
+                                        src={
+                                            isBookmarkClicked
+                                                ? '/image/fillBookmark2.png'
+                                                : '/image/Bookmark2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-3"
+                                    />
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -388,10 +711,6 @@ textBody.style.fontSize = '2rem';
                         <span className="user-nickname">힘내자청춘 (병장 2호봉)</span>
                         {/* 작성 날짜 */}
                         <span className="day">4일전</span>
-                        {/* 더보기 버튼 */}
-                        <button className="more-button">
-                            <img src="/image/More Square.png" alt="" />
-                        </button>
 
                         {/* 게시글 내용 */}
                         <div className="text-container">
@@ -407,6 +726,46 @@ textBody.style.fontSize = '2rem';
                                 일반화하.. 배송을 원하는 게 고객이에요. 그래서 항상 높은 목표를 갖고
                                 일해야 합니다. 꽤 일반화하...
                             </span>
+                        </div>
+                        <div className="action-wrapper">
+                            <div className="action-container">
+                                {/* 반응 이미지 */}
+                                <button onClick={handleHeartButtonClick}>
+                                    <img
+                                        src={
+                                            isHeartClicked
+                                                ? '/image/fillHeart2.png'
+                                                : '/image/Heart2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-1"
+                                    />
+                                </button>
+
+                                <button onClick={handleChatButtonClick}>
+                                    <img
+                                        src={
+                                            isChatClicked
+                                                ? '/image/fillChat2.png'
+                                                : '/image/Chat2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-2"
+                                    />
+                                </button>
+
+                                <button onClick={handleBookmarkButtonClick}>
+                                    <img
+                                        src={
+                                            isBookmarkClicked
+                                                ? '/image/fillBookmark2.png'
+                                                : '/image/Bookmark2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-3"
+                                    />
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -423,10 +782,6 @@ textBody.style.fontSize = '2rem';
                         <span className="user-nickname">힘내자청춘 (병장 2호봉)</span>
                         {/* 작성 날짜 */}
                         <span className="day">4일전</span>
-                        {/* 더보기 버튼 */}
-                        <button className="more-button">
-                            <img src="/image/More Square.png" alt="" />
-                        </button>
 
                         {/* 게시글 내용 */}
                         <div className="text-container">
@@ -443,8 +798,406 @@ textBody.style.fontSize = '2rem';
                                 일해야 합니다. 꽤 일반화하...
                             </span>
                         </div>
+                        <div className="action-wrapper">
+                            <div className="action-container">
+                                {/* 반응 이미지 */}
+                                <button onClick={handleHeartButtonClick}>
+                                    <img
+                                        src={
+                                            isHeartClicked
+                                                ? '/image/fillHeart2.png'
+                                                : '/image/Heart2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-1"
+                                    />
+                                </button>
+
+                                <button onClick={handleChatButtonClick}>
+                                    <img
+                                        src={
+                                            isChatClicked
+                                                ? '/image/fillChat2.png'
+                                                : '/image/Chat2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-2"
+                                    />
+                                </button>
+
+                                <button onClick={handleBookmarkButtonClick}>
+                                    <img
+                                        src={
+                                            isBookmarkClicked
+                                                ? '/image/fillBookmark2.png'
+                                                : '/image/Bookmark2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-3"
+                                    />
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                
+                
+                
+                {/* 게시글 내용 */}
+                <div className="box-wrapper">
+                    {/* 첫 번째 게시글 */}
+                    <div className="custom-bar">
+                        {/* 프로필 이미지 */}
+                        <img src="/image/Ellipse 11.png" alt="" className="custom-image" />
+                        {/* 사용자 닉네임 */}
+                        <span className="user-nickname">힘내자청춘 (병장 2호봉)</span>
+                        {/* 작성 날짜 */}
+                        <span className="day">4일전</span>
+
+                        {/* 게시글 내용 */}
+                        <div className="text-container">
+                            <span className="text-body">
+                                “회사의 목표가 너무 높다며 불평불만을 늘어놓거나 포기할 것 같은
+                                사람은 면접 단계에서 다 걸러내려 합니다. 고객 눈높이는 계속 높아지니
+                                어쩔 수 없어요. 이틀 내 배송을 실현하면, 다잉ㄹ려 합니다. 고객
+                                눈높이는 계속 높아지니 어쩔 수 없어요. 이틀 내 배송을 실현하면,
+                                다잉ㄹ 배송을 원하는 게 고객이에요. 그래서 항상 높은 목표를 갖고
+                                일해야 합니다. 꽤 일반화하..려 합니다. 고객 눈높이는 계속 높아지니
+                                어쩔 수 없어요. 이틀 내 배송을 실현하면, 다잉ㄹ 배송을 원하는 게
+                                고객이에요. 그래서 항상 높은 목표를 갖고 일해야 합니다. 꽤
+                                일반화하.. 배송을 원하는 게 고객이에요. 그래서 항상 높은 목표를 갖고
+                                일해야 합니다. 꽤 일반화하...
+                            </span>
+                        </div>
+                        <div className="action-wrapper">
+                            <div className="action-container">
+                                {/* 반응 이미지 */}
+                                <button onClick={handleHeartButtonClick}>
+                                    <img
+                                        src={
+                                            isHeartClicked
+                                                ? '/image/fillHeart2.png'
+                                                : '/image/Heart2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-1"
+                                    />
+                                </button>
+
+                                <button onClick={handleChatButtonClick}>
+                                    <img
+                                        src={
+                                            isChatClicked
+                                                ? '/image/fillChat2.png'
+                                                : '/image/Chat2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-2"
+                                    />
+                                </button>
+
+                                <button onClick={handleBookmarkButtonClick}>
+                                    <img
+                                        src={
+                                            isBookmarkClicked
+                                                ? '/image/fillBookmark2.png'
+                                                : '/image/Bookmark2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-3"
+                                    />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                {/* 게시글 내용 */}
+                <div className="box-wrapper">
+                    {/* 첫 번째 게시글 */}
+                    <div className="custom-bar">
+                        {/* 프로필 이미지 */}
+                        <img src="/image/Ellipse 11.png" alt="" className="custom-image" />
+                        {/* 사용자 닉네임 */}
+                        <span className="user-nickname">힘내자청춘 (병장 2호봉)</span>
+                        {/* 작성 날짜 */}
+                        <span className="day">4일전</span>
+
+                        {/* 게시글 내용 */}
+                        <div className="text-container">
+                            <span className="text-body">
+                                “회사의 목표가 너무 높다며 불평불만을 늘어놓거나 포기할 것 같은
+                                사람은 면접 단계에서 다 걸러내려 합니다. 고객 눈높이는 계속 높아지니
+                                어쩔 수 없어요. 이틀 내 배송을 실현하면, 다잉ㄹ려 합니다. 고객
+                                눈높이는 계속 높아지니 어쩔 수 없어요. 이틀 내 배송을 실현하면,
+                                다잉ㄹ 배송을 원하는 게 고객이에요. 그래서 항상 높은 목표를 갖고
+                                일해야 합니다. 꽤 일반화하..려 합니다. 고객 눈높이는 계속 높아지니
+                                어쩔 수 없어요. 이틀 내 배송을 실현하면, 다잉ㄹ 배송을 원하는 게
+                                고객이에요. 그래서 항상 높은 목표를 갖고 일해야 합니다. 꽤
+                                일반화하.. 배송을 원하는 게 고객이에요. 그래서 항상 높은 목표를 갖고
+                                일해야 합니다. 꽤 일반화하...
+                            </span>
+                        </div>
+                        <div className="action-wrapper">
+                            <div className="action-container">
+                                {/* 반응 이미지 */}
+                                <button onClick={handleHeartButtonClick}>
+                                    <img
+                                        src={
+                                            isHeartClicked
+                                                ? '/image/fillHeart2.png'
+                                                : '/image/Heart2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-1"
+                                    />
+                                </button>
+
+                                <button onClick={handleChatButtonClick}>
+                                    <img
+                                        src={
+                                            isChatClicked
+                                                ? '/image/fillChat2.png'
+                                                : '/image/Chat2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-2"
+                                    />
+                                </button>
+
+                                <button onClick={handleBookmarkButtonClick}>
+                                    <img
+                                        src={
+                                            isBookmarkClicked
+                                                ? '/image/fillBookmark2.png'
+                                                : '/image/Bookmark2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-3"
+                                    />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                {/* 게시글 내용 */}
+                <div className="box-wrapper">
+                    {/* 첫 번째 게시글 */}
+                    <div className="custom-bar">
+                        {/* 프로필 이미지 */}
+                        <img src="/image/Ellipse 11.png" alt="" className="custom-image" />
+                        {/* 사용자 닉네임 */}
+                        <span className="user-nickname">힘내자청춘 (병장 2호봉)</span>
+                        {/* 작성 날짜 */}
+                        <span className="day">4일전</span>
+
+                        {/* 게시글 내용 */}
+                        <div className="text-container">
+                            <span className="text-body">
+                                “회사의 목표가 너무 높다며 불평불만을 늘어놓거나 포기할 것 같은
+                                사람은 면접 단계에서 다 걸러내려 합니다. 고객 눈높이는 계속 높아지니
+                                어쩔 수 없어요. 이틀 내 배송을 실현하면, 다잉ㄹ려 합니다. 고객
+                                눈높이는 계속 높아지니 어쩔 수 없어요. 이틀 내 배송을 실현하면,
+                                다잉ㄹ 배송을 원하는 게 고객이에요. 그래서 항상 높은 목표를 갖고
+                                일해야 합니다. 꽤 일반화하..려 합니다. 고객 눈높이는 계속 높아지니
+                                어쩔 수 없어요. 이틀 내 배송을 실현하면, 다잉ㄹ 배송을 원하는 게
+                                고객이에요. 그래서 항상 높은 목표를 갖고 일해야 합니다. 꽤
+                                일반화하.. 배송을 원하는 게 고객이에요. 그래서 항상 높은 목표를 갖고
+                                일해야 합니다. 꽤 일반화하...
+                            </span>
+                        </div>
+                        <div className="action-wrapper">
+                            <div className="action-container">
+                                {/* 반응 이미지 */}
+                                <button onClick={handleHeartButtonClick}>
+                                    <img
+                                        src={
+                                            isHeartClicked
+                                                ? '/image/fillHeart2.png'
+                                                : '/image/Heart2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-1"
+                                    />
+                                </button>
+
+                                <button onClick={handleChatButtonClick}>
+                                    <img
+                                        src={
+                                            isChatClicked
+                                                ? '/image/fillChat2.png'
+                                                : '/image/Chat2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-2"
+                                    />
+                                </button>
+
+                                <button onClick={handleBookmarkButtonClick}>
+                                    <img
+                                        src={
+                                            isBookmarkClicked
+                                                ? '/image/fillBookmark2.png'
+                                                : '/image/Bookmark2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-3"
+                                    />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                {/* 게시글 내용 */}
+                <div className="box-wrapper">
+                    {/* 첫 번째 게시글 */}
+                    <div className="custom-bar">
+                        {/* 프로필 이미지 */}
+                        <img src="/image/Ellipse 11.png" alt="" className="custom-image" />
+                        {/* 사용자 닉네임 */}
+                        <span className="user-nickname">힘내자청춘 (병장 2호봉)</span>
+                        {/* 작성 날짜 */}
+                        <span className="day">4일전</span>
+
+                        {/* 게시글 내용 */}
+                        <div className="text-container">
+                            <span className="text-body">
+                                “회사의 목표가 너무 높다며 불평불만을 늘어놓거나 포기할 것 같은
+                                사람은 면접 단계에서 다 걸러내려 합니다. 고객 눈높이는 계속 높아지니
+                                어쩔 수 없어요. 이틀 내 배송을 실현하면, 다잉ㄹ려 합니다. 고객
+                                눈높이는 계속 높아지니 어쩔 수 없어요. 이틀 내 배송을 실현하면,
+                                다잉ㄹ 배송을 원하는 게 고객이에요. 그래서 항상 높은 목표를 갖고
+                                일해야 합니다. 꽤 일반화하..려 합니다. 고객 눈높이는 계속 높아지니
+                                어쩔 수 없어요. 이틀 내 배송을 실현하면, 다잉ㄹ 배송을 원하는 게
+                                고객이에요. 그래서 항상 높은 목표를 갖고 일해야 합니다. 꽤
+                                일반화하.. 배송을 원하는 게 고객이에요. 그래서 항상 높은 목표를 갖고
+                                일해야 합니다. 꽤 일반화하...
+                            </span>
+                        </div>
+                        <div className="action-wrapper">
+                            <div className="action-container">
+                                {/* 반응 이미지 */}
+                                <button onClick={handleHeartButtonClick}>
+                                    <img
+                                        src={
+                                            isHeartClicked
+                                                ? '/image/fillHeart2.png'
+                                                : '/image/Heart2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-1"
+                                    />
+                                </button>
+
+                                <button onClick={handleChatButtonClick}>
+                                    <img
+                                        src={
+                                            isChatClicked
+                                                ? '/image/fillChat2.png'
+                                                : '/image/Chat2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-2"
+                                    />
+                                </button>
+
+                                <button onClick={handleBookmarkButtonClick}>
+                                    <img
+                                        src={
+                                            isBookmarkClicked
+                                                ? '/image/fillBookmark2.png'
+                                                : '/image/Bookmark2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-3"
+                                    />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                {/* 게시글 내용 */}
+                <div className="box-wrapper">
+                    {/* 첫 번째 게시글 */}
+                    <div className="custom-bar">
+                        {/* 프로필 이미지 */}
+                        <img src="/image/Ellipse 11.png" alt="" className="custom-image" />
+                        {/* 사용자 닉네임 */}
+                        <span className="user-nickname">힘내자청춘 (병장 2호봉)</span>
+                        {/* 작성 날짜 */}
+                        <span className="day">4일전</span>
+
+                        {/* 게시글 내용 */}
+                        <div className="text-container">
+                            <span className="text-body">
+                                “회사의 목표가 너무 높다며 불평불만을 늘어놓거나 포기할 것 같은
+                                사람은 면접 단계에서 다 걸러내려 합니다. 고객 눈높이는 계속 높아지니
+                                어쩔 수 없어요. 이틀 내 배송을 실현하면, 다잉ㄹ려 합니다. 고객
+                                눈높이는 계속 높아지니 어쩔 수 없어요. 이틀 내 배송을 실현하면,
+                                다잉ㄹ 배송을 원하는 게 고객이에요. 그래서 항상 높은 목표를 갖고
+                                일해야 합니다. 꽤 일반화하..려 합니다. 고객 눈높이는 계속 높아지니
+                                어쩔 수 없어요. 이틀 내 배송을 실현하면, 다잉ㄹ 배송을 원하는 게
+                                고객이에요. 그래서 항상 높은 목표를 갖고 일해야 합니다. 꽤
+                                일반화하.. 배송을 원하는 게 고객이에요. 그래서 항상 높은 목표를 갖고
+                                일해야 합니다. 꽤 일반화하...
+                            </span>
+                        </div>
+                        <div className="action-wrapper">
+                            <div className="action-container">
+                                {/* 반응 이미지 */}
+                                <button onClick={handleHeartButtonClick}>
+                                    <img
+                                        src={
+                                            isHeartClicked
+                                                ? '/image/fillHeart2.png'
+                                                : '/image/Heart2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-1"
+                                    />
+                                </button>
+
+                                <button onClick={handleChatButtonClick}>
+                                    <img
+                                        src={
+                                            isChatClicked
+                                                ? '/image/fillChat2.png'
+                                                : '/image/Chat2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-2"
+                                    />
+                                </button>
+
+                                <button onClick={handleBookmarkButtonClick}>
+                                    <img
+                                        src={
+                                            isBookmarkClicked
+                                                ? '/image/fillBookmark2.png'
+                                                : '/image/Bookmark2.png'
+                                        }
+                                        alt=""
+                                        className="action-image-3"
+                                    />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
                 
             </div>
 
@@ -457,7 +1210,7 @@ textBody.style.fontSize = '2rem';
                     <span></span>
                 </div>
                 <div>
-                    <button onClick={handleButtonClick}>
+                    <button onClick={handleButtonClickBoard}>
                         <img src="image/Document.png" alt="아이콘 2" />
                     </button>
                     <span></span>
